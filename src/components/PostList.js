@@ -1,8 +1,8 @@
 import React from 'react'
 
-function PostList() {
+function PostList({ content, image }) {
   return(
-    <div>PostList</div>
+    <div>{content}</div>
   )
 }
 

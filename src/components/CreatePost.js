@@ -1,13 +1,22 @@
 import React from 'react'
+import PostList from "./PostList"
 
-function CreatePost({ user }) {
+
+function CreatePost({ user, posts, setPosts }) {
   const [ content, setContent ] = React.useState("")
   const [ image, setImage ] = React.useState(null)
-  
+
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    const post = { content, image, user }
+    const newPosts = [post, ...posts]
+    setPosts(newPosts)
+  }
   return(
     <>
       <h1>Create a Post</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input 
           type="text"
           placeholder="enter content here"
@@ -19,17 +28,6 @@ function CreatePost({ user }) {
         />
         <button type="submit">Submit Post</button>
       </form>
-      <p>{content}</p>
-      {image && 
-        <>
-        <img 
-          src={URL.createObjectURL(image)}
-          style={{ height:300, width:200, objectFit:'cover' }}
-        />
-        <p>{user}</p>
-        </>
-        }
-      
     </>
   )
 }
