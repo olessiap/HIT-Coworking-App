@@ -17,6 +17,7 @@ function App() {
   return (
     <div>
       <Header user={user} setUser={setUser}/>
+      <CreatePost />
     </div>
   )
 }
