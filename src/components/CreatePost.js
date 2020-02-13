@@ -1,6 +1,6 @@
 import React from 'react'
 
-function CreatePost() {
+function CreatePost({ user }) {
   const [ content, setContent ] = React.useState("")
   const [ image, setImage ] = React.useState(null)
   
@@ -21,10 +21,15 @@ function CreatePost() {
       </form>
       <p>{content}</p>
       {image && 
+        <>
         <img 
           src={URL.createObjectURL(image)}
           style={{ height:300, width:200, objectFit:'cover' }}
-        />}
+        />
+        <p>{user}</p>
+        </>
+        }
+      
     </>
   )
 }
