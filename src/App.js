@@ -6,7 +6,7 @@ import Post from "./components/Post"
 import PostList from "./components/PostList"
 
 function App() {
-  const [ user, setUser ] = React.useState("")
+  const [ user, setUser ] = React.useState("oli")
   
   if(!user) {
     return <Login setUser={setUser}/>
@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div>
-      <CreatePost /> 
+      <Header user={user} setUser={setUser}/>
     </div>
   )
 }
