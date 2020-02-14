@@ -2,6 +2,7 @@ import React from 'react'
 import CreatePost from "./components/CreatePost"
 import Header from "./components/Header"
 import Login from "./components/Login"
+import PostList from "./components/PostList"
 
 function App() {
   const [ user, setUser ] = React.useState("oli")
@@ -19,18 +20,7 @@ function App() {
     <div>
       <Header user={user} setUser={setUser}/>
       <CreatePost user={user} posts={posts} setPosts={setPosts}/>
-      {posts.map((post, index) => (
-        <React.Fragment key={index}>
-          {post.image && (
-            <img 
-              src={URL.createObjectURL(post.image)}
-              style={{ height:300, width:200, objectFit:"cover"}}
-            />
-          )}
-          <p>{post.content}</p>
-          <p>{user}</p>
-        </React.Fragment>
-      ))}
+      <PostList posts={posts}/>
     </div>
   )
 }
