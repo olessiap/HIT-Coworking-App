@@ -9,8 +9,6 @@ function CreatePost({ user, handleAddPost }) {
   function handleSubmit(event) {
     event.preventDefault()
     const post = { content, image, user }
-    // const newPosts = [post, ...posts]
-    // setPosts(newPosts)
     handleAddPost(post)
     setContent("")
     imageInputRef.current.value = ""
