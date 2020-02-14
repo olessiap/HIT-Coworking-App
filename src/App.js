@@ -12,14 +12,17 @@ function App() {
     document.title =  user ? `${user}'s feed` : "please log in"
   }, [user])
 
+  function handleAddPost(newPost){
+    setPosts([newPost, ...posts])
+  }
+  
   if(!user) {
     return <Login setUser={setUser}/>
   }
-  console.log(posts)
   return (
     <div>
       <Header user={user} setUser={setUser}/>
-      <CreatePost user={user} posts={posts} setPosts={setPosts}/>
+      <CreatePost user={user} handleAddPost={handleAddPost}/>
       <PostList posts={posts}/>
     </div>
   )
