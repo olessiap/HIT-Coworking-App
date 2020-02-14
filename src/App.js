@@ -21,12 +21,12 @@ function App() {
       <CreatePost user={user} posts={posts} setPosts={setPosts}/>
       {posts.map((post, index) => (
         <React.Fragment key={index}>
-        {post.image && (
-          <img 
-            src={URL.createObjectURL(post.image)}
-            style={{ height: 100, width:100, objectFit:"cover"}}
-          />
-        )}
+          {post.image && (
+            <img 
+              src={URL.createObjectURL(post.image)}
+              style={{ height:300, width:200, objectFit:"cover"}}
+            />
+          )}
           <p>{post.content}</p>
           <p>{user}</p>
         </React.Fragment>
