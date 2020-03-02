@@ -1,20 +1,19 @@
-import React from 'react'
-
-function Login( {setUser}) {
-  const [ userName, setUserName ] = React.useState("")
-
-  function handleSetUserName(event) {
-    event.preventDefault()
+import React, { useState } from 'react'
+  //setup component state
+  //setup the form
+  //onchange set user
+  //onsubmit setUser from App with the component user
+const Login = ({ setUser }) => {
+  const [ userName, setUserName ] = useState("")
+  const handleSumbit = (e) => {
+    e.preventDefault()
     setUser(userName)
   }
-  return(
+  return (
     <>
-      <h2>Login</h2>
-      <form onSubmit={handleSetUserName}>
-        <input 
-          onChange={(event) => setUserName(event.target.value)}
-          placeholder="input username" />
-        <button type="submit">Submit</button>
+      <form onSubmit={handleSumbit}>
+        <input type="text" placeholder="username" onChange={(e) => setUserName(e.target.value)}/>
+        <input type="submit" value="login"/>
       </form>
     </>
   )

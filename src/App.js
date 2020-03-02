@@ -1,32 +1,36 @@
-import React from 'react'
-import CreatePost from "./components/CreatePost"
-import Header from "./components/Header"
-import Login from "./components/Login"
-import PostList from "./components/PostList"
+import React, { useState, useEffect } from 'react'
+import CreatePost from './components/CreatePost'
+import Header from './components/Header'
+import Login from './components/Login'
+import PostList from './components/PostList'
 
-function App() {
-  const [ user, setUser ] = React.useState("oli")
-  const [ posts, setPosts ] = React.useState([])
+export const UserContext = React.createContext()
+
+const App = () => {
+  const [ user, setUser ] = useState("Oli")
+  const [ posts, setPosts ] = useState([])
   
-  React.useEffect(() => {
-    document.title =  user ? `${user}'s feed` : "please log in"
-  }, [user])
-
+  useEffect(() => {
+    document.title = user ? `${user}'s feed` : "please sign in"
+  })
+  
   const handleAddPost = React.useCallback(
     newPost => {
       setPosts([newPost, ...posts])
     }, [posts]
-  )
+ )
+ 
   if(!user) {
-    return <Login setUser={setUser}/>
+    return <Login setUser={setUser} />
   }
+
   return (
-    <div>
-      <Header user={user} setUser={setUser}/>
+    <UserContext.Provider value={user}>
+      <Header user={user} setUser={setUser} />
       <CreatePost user={user} handleAddPost={handleAddPost}/>
       <PostList posts={posts}/>
-    </div>
+    </UserContext.Provider>
   )
 }
-
+ 
 export default App

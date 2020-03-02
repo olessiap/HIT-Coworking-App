@@ -1,7 +1,7 @@
 import React from 'react'
 import Post from './Post'
 
-function PostList({ posts }) {
+const PostList = ( {posts}) => {
   return posts.map((post, index) => (<Post key={index} {...post}/>))
 }
 

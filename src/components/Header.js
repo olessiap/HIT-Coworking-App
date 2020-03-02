@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Header({user, setUser}) {
-  return (
+const Header = ({ user, setUser }) => {
+  return(
     <>
-      <p>welcome, {user}!</p>
+      <p>hello, {user}!</p>
       <button onClick={() => setUser("")}>logout</button>
     </>
   )
