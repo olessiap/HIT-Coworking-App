@@ -1,7 +1,6 @@
 import React from 'react'
 import { UserContext } from '../App'
 
-
 const Post = ({image, content, user}) => {
 
   const currentUser = React.useContext(UserContext)
