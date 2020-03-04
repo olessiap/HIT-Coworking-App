@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import { PostContext } from '../App'
 
-const CreatePost = ({user, handleAddPost }) => {
+const CreatePost = ({ user }) => {
   const [ content, setContent ] = useState("")
   const [ image, setImage ] = useState(null)
   
@@ -10,8 +10,8 @@ const CreatePost = ({user, handleAddPost }) => {
 
   const hanldeSubmit = (e) => {
     e.preventDefault()
-    const post = { content, image, user }
-    dispatch({type: "ADD_POST", payload: {post}})
+    const post = { content, image, user, id: Date.now() }
+    dispatch({type: "ADD_POST", payload: {post} })
     setContent("")
     setImage(
       imageInputRef.current.value=""
